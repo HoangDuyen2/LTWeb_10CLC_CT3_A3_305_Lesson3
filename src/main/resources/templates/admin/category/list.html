@@ -42,8 +42,8 @@
   </tr>
   </thead>
   <tbody>
-  <tr th:each="category, stt : ${categories}">
-    <td th:text="${stt.index + 1}"></td>
+  <tr th:each="category, index : ${categories}">
+    <td th:text="${index.index + 1}"></td>
     <td><img th:src="${category.images}" alt="Category Image" width="50" height="50"></td>
     <td th:text="${category.name}"></td>
     <td th:text="${category.status}"></td>
