@@ -20,11 +20,13 @@
 </head>
 <body>
 
-<div th:replace="~{fragments/header::header}"></div>
+<div th:replace="~{/admin/fragments/header::header}"></div>
 
 <h1>Category List</h1>
 
 <a th:href="@{/admin/categories/add}">Add Category</a>
+<br>
+<a th:href="@{/admin/categories/searchpaginated}">Search Category</a>
 <br>
 
 <div th:if="${message != null}" th:text="${message}"></div>
@@ -42,17 +44,18 @@
   <tbody>
   <tr th:each="category, stt : ${categories}">
     <td th:text="${stt.index + 1}"></td>
-    <td><img th:src="${cate.images}" alt="Category Image" width="50" height="50"></td>
-    <td th:text="${cate.name}"></td>
-    <td th:text="${cate.status}"></td>
+    <td><img th:src="${category.images}" alt="Category Image" width="50" height="50"></td>
+    <td th:text="${category.name}"></td>
+    <td th:text="${category.status}"></td>
     <td>
-      <a th:href="@{/admin/categories/edit/{id}(id=${cate.id})}">Sửa</a> |
-      <a th:href="@{/admin/categories/delete/{id}(id=${cate.id})}">Xóa</a>
+      <a th:href="@{/admin/categories/edit/{id}(id=${category.id})}">Sửa</a> |
+      <a th:href="@{/admin/categories/delete/{id}(id=${category.id})}">Xóa</a>
     </td>
   </tr>
   </tbody>
 </table>
-<div th:replace="~{fragments/footer :: footer}"></div>
+
+<div th:replace="~{/admin/fragments/footer::footer}"></div>
 
 </body>
 </html>

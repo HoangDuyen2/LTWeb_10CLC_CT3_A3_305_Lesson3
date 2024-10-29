@@ -1,8 +1,6 @@
 package vn.iotstar.Controllers;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.validation.Valid;
-import org.eclipse.tags.shaded.org.apache.xpath.operations.Mod;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -72,7 +70,7 @@ public class CategoryController {
     @PostMapping("/insert")
     public ModelAndView saveOrUpdate(ModelMap model, @Valid @ModelAttribute("category") CategoryModel categoryModel, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("/views/admin/category/add");
+            return new ModelAndView("/admin/category/add");
         }
         Category category = new Category();
         BeanUtils.copyProperties(categoryModel, category);
@@ -124,6 +122,6 @@ public class CategoryController {
             model.addAttribute("pageNumbers",pageNumbers);
         }
         model.addAttribute("categoryPage",resultPage);
-        return "admin/category/list";
+        return "/admin/category/list-page";
     }
 }

@@ -5,12 +5,10 @@
   Time: 2:22 PM
   To change this template use File | Settings | File Templates.
 --%>
-
-<!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
 
 
-<div th:replace="~{fragments/header :: header}"></div>
+<div th:replace="~{/admin/fragments/header::header}"></div>
 
 <h1 th:text="${category.isEdit} ? 'Update Category' : 'Add New Category'"></h1>
 
@@ -30,8 +28,7 @@
 
   <button type="submit" th:text="${category.isEdit} ? 'Update' : 'Insert'"></button>
 </form>
-
-<div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{/admin/fragments/footer::footer}"></div>
 
 </body>
 </html>
