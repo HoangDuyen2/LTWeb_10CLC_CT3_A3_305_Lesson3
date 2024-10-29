@@ -5,21 +5,23 @@
 
 <h1 th:text="${category.isEdit} ? 'Update Category' : 'Add New Category'"></h1>
 
-<form th:action="@{/admin/categories/insert}" method="post">
-  <!-- Hidden fields to handle editing -->
-  <input type="hidden" th:value="${category.isEdit}" name="isEdit">
-  <input type="hidden" th:value="${category.id}" name="id">
+<!-- Hêt thông báo -->
+<form th:action="@{/admin/categories/insert}" method="post" th:object="${category}">
 
-  <label>Category Name</label><br>
-  <input type="text" name="name" th:value="${category.name}"><br><br>
+    <!-- Hidden fields to handle editing -->
+    <input type="hidden" th:value="${category.isEdit}" name="isEdit">
+    <input type="hidden" th:value="${category.id}" name="id">
 
-  <label>Images</label><br>
-  <input type="text" name="images" th:value="${category.images}"><br><br>
+    <label>Category name:</label><br>
+    <input type="text" placeholder="Category name" required th:field="*{name}"><br>
 
-  <label>Status</label><br>
-  <input type="text" name="status" th:value="${category.status}"><br><br>
+    <label>Images</label><br>
+    <input type="text" name="images" th:field="*{images}"><br>
 
-  <button type="submit" th:text="${category.isEdit} ? 'Update' : 'Insert'"></button>
+    <label>Status</label><br>
+    <input type="text" name="status" th:field="*{status}"><br><br>
+
+    <button type="submit" th:text="${category.isEdit} ? 'Update' : 'Insert'"></button>
 </form>
 <div th:replace="~{/admin/fragments/footer::footer}"></div>
 
