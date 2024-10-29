@@ -48,4 +48,20 @@ public class CategoryServiceImpl implements CategoryService{
     public Page<Category> findAll(Pageable pageable) {
         return categoryRepository.findAll(pageable);
     }
+
+    @Override
+    public Page<Category> findByNameContaining(String name, Pageable pageable) {
+        return categoryRepository.findByNameContaining(name, pageable);
+    }
+
+    @Override
+    public boolean deleteById(Long id) {
+        if (categoryRepository.findById(id).isPresent()) {
+            categoryRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
+
 }

@@ -19,4 +19,7 @@ public interface CategoryService {
     Optional<Category> findById(Long aLong);
 
     Page<Category> findAll(Pageable pageable);
+    Page<Category> findByNameContaining(String name, Pageable pageable);
+
+    boolean deleteById(Long id);
 }
